@@ -1,0 +1,28 @@
+<!-- pager -->
+<nav *ngIf="items!= undefined && items.length > pageSize">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [class.disabled]="pager.currentPage == 1" class="page-item">
+            <a (click)="setPage(1)" aria-label="First" title="First" class="page-link">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        <li [class.disabled]="pager.currentPage == 1" class="page-item">
+            <a (click)="setPage(pager.currentPage - 1)" aria-label="Previous" title="Previous" class="page-link">
+                <span aria-hidden="true">&lsaquo;</span>
+            </a>
+        </li>
+        <li *ngFor="let page of pager.pages" [class.active]="pager.currentPage == page" class="page-item">
+            <a (click)="setPage(page)" class="page-link">{{page}}</a>
+        </li>
+        <li [class.disabled]="pager.currentPage == pager.totalPages" class="page-item">
+            <a (click)="setPage(pager.currentPage + 1)" aria-label="Next" title="Next" class="page-link">
+                <span aria-hidden="true">&rsaquo;</span>
+            </a>
+        </li>
+        <li [class.disabled]="pager.currentPage == pager.totalPages" class="page-item">
+            <a (click)="setPage(pager.totalPages)" aria-label="Last" title="Last" class="page-link">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>

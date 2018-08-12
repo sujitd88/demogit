@@ -1,0 +1,30 @@
+<form [formGroup]="userEditForm" #userData = "ngForm" (ngSubmit) = "updateUser(userData.value)">
+<div class="head-text">
+    First Name
+  </div>
+  <div>
+    <input type="text" formControlName="FirstName" class="form-input" [(ngModel)]="users.FirstName" ngModel>
+  </div>
+  <div class="head-text">
+    Last Name
+  </div>
+  <div>
+    <input type="text" formControlName="LastName" class="form-input" [(ngModel)]="users.LastName" ngModel>
+  </div>
+  <div class="head-text">
+    Email
+  </div>
+  <div>
+    <input type="text" formControlName="Email" class="form-input" [(ngModel)]="users.Email" ngModel>
+  </div>
+  <div class="head-text">
+    Contact
+  </div>
+  <div>
+    <input type="text" formControlName="ContactNumber" class="form-input" [(ngModel)]="users.ContactNumber" ngModel>
+  </div>
+  <div style="margin-top:10px;">
+    <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+    <button type="submit" class="btn btn-info pull-right" title="Add">Update</button>
+  </div>
+</form>

@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid" style="margin-top: 2.5rem">
+            <drc-topnav></drc-topnav>
+        </div>
+    </nav>
+    <div>
+        <drc-breadcrumb></drc-breadcrumb>
+    </div>
+    <div class="container">
+        <router-outlet>
+            <div class="loading" *ngIf="objLoaderStatus"></div>
+        </router-outlet>
+    </div>
+</div>

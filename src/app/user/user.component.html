@@ -1,0 +1,15 @@
+<div class="content-wrapper">
+  <div class="container-fluid" style="padding: 30px 0 0 0">
+      <!-- Breadcrumbs-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table" style="margin-top: 10px;"></i> Users
+          <div class="pull-right" *ngIf="showAdd">
+            <button type="button" class="btn btn-default" (click)="openModal()">Add User</button>
+          </div>
+        </div>
+        <div class="card-body">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

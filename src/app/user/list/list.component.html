@@ -1,0 +1,54 @@
+
+<div class="table-responsive">
+    <div id="Data_Table_3_filter" class="navbar-search pull-right">
+      <drc-search (onSearchTermChange)="onSearchTermChanged($event)"></drc-search>
+    </div>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th (click)="sort('id')">UID
+            <span drcSort [sortOrder]="isDesc" [columnName]="'id'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th (click)="sort('FirstName')">FirstName
+            <span drcSort [sortOrder]="isDesc" [columnName]="'FirstName'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th (click)="sort('LastName')">LastName
+            <span drcSort [sortOrder]="isDesc" [columnName]="'LastName'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th (click)="sort('Email')">Email
+            <span drcSort [sortOrder]="isDesc" [columnName]="'Email'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th (click)="sort('ContactNumber')">ContactNumber
+            <span drcSort [sortOrder]="isDesc" [columnName]="'ContactNumber'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th (click)="sort('Date')">Date
+            <span drcSort [sortOrder]="isDesc" [columnName]="'Date'" [sortColumn]="column" aria-hidden="true"> </span>
+          </th>
+          <th class="text-center">Actions</th>
+        </tr>
+        <tr *ngIf="(users?.length<=0 || (users | search:search).length == 0)">
+          <td colspan="7">
+            <drc-norecords></drc-norecords>
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | search:search | sort: {property: column, direction: direction}">
+          <td>{{user.id}}</td>
+          <td>{{user.FirstName}}</td>
+          <td>{{user.LastName }}</td>
+          <td>{{user.Email }}</td>
+          <td>{{user.ContactNumber}}</td>
+          <td>{{user.Date}}</td>
+          <td class="text-center">
+            <i class="fa fa-pencil" [routerLink] = "['edit',user.id]"></i>&nbsp;
+            <i class="fa fa-trash" (click)="onDelete(user.id)"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pull-right">
+      <drc-pagination [items]="filteredItems" (pageChanged)="onSetPage($event)" [pageSize]="pageSize"></drc-pagination>
+    </div>
+    <div class="clearfix"></div>
+  </div>
